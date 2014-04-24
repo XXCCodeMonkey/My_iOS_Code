@@ -47,7 +47,7 @@
 #pragma mark === 覆盖父类方法，添加通用参数 ===
 #pragma mark -
 - (NetworkHeader*)addGetOperation:(NSString *)urlStr ReqType:(NSUInteger)reqType Delegate:(id)delg {
-    NSMutableString *ms = [NSMutableString stringWithCapacity:100];
+    NSMutableString *ms = [NSMutableString string];
     [ms setString:urlStr];
     NSString *murl = [ms stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"QueryUrl:%@", ms);
@@ -57,9 +57,9 @@
 }
 
 - (NetworkHeader*)addPostOperation:(NSString *)urlStr ReqType:(NSUInteger)reqType PostDatas:(NSDictionary *)postDatas Delegate:(id)delg {
-    NSMutableString *ms = [NSMutableString stringWithCapacity:100];
+    NSMutableString *ms = [NSMutableString string];
     [ms setString:urlStr];
-    NSMutableDictionary *md = [NSMutableDictionary dictionaryWithCapacity:10];
+    NSMutableDictionary *md = [NSMutableDictionary dictionary];
     [md setDictionary:postDatas];
     NSString *murl = [ms stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"Parameter:%@", md);

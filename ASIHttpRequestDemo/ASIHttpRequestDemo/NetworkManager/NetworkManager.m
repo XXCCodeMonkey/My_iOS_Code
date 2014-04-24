@@ -35,8 +35,8 @@
 		[_networkQueue setDelegate:self];
         [_networkQueue setShouldCancelAllRequestsOnFailure:NO];
         [_networkQueue setMaxConcurrentOperationCount:10];//一次最多10个请求
-		_queueMapping = [NSMutableDictionary dictionaryWithCapacity:10];
-        _registedInstances = [NSMutableDictionary dictionaryWithCapacity:10];
+		_queueMapping = [NSMutableDictionary dictionary];
+        _registedInstances = [NSMutableDictionary dictionary];
         _threadLock = NO;
 	}
 	return self;
@@ -86,7 +86,7 @@
     @synchronized(self.registedInstances) {
         obj = self.registedInstances[key];
     }
-    if (obj)  {
+    if (obj) {
         return YES;
     } else {
         return NO;
@@ -96,7 +96,9 @@
 #pragma mark -
 #pragma mark === HTTP:GET POST DELETE ===
 #pragma mark -
-- (NetworkHeader*)addGetOperation:(NSString*)urlStr ReqType:(NSUInteger)reqType Delegate:(id)delg {
+- (NetworkHeader*)addGetOperation:(NSString *)urlStr
+                          ReqType:(NSUInteger)reqType
+                         Delegate:(id)delg {
     if (![self registNetwork:delg])
     {
         //        return nil;
@@ -104,8 +106,7 @@
     NSLog(@"murl:{%@}", urlStr);
 	ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlStr]];
 	[request setDelegate:self];
-	request.timeOutSeconds = TIME_OUT_SECOND_GET;
-    
+    [request setTimeOutSeconds:TIME_OUT_SECOND_GET];
     NetworkHeader *header = [[NetworkHeader alloc] init];
 	header.netDelegate = delg;
 	header.request = request;
@@ -119,14 +120,17 @@
     return header;
 }
 
-- (NetworkHeader*)addPostOperation:(NSString*)urlStr ReqType:(NSUInteger)reqType PostDatas:(NSDictionary*)postDatas Delegate:(id)delg {
+- (NetworkHeader*)addPostOperation:(NSString *)urlStr
+                           ReqType:(NSUInteger)reqType
+                         PostDatas:(NSDictionary *)postDatas
+                          Delegate:(id)delg {
     if (![self registNetwork:delg])
     {
         //        return nil;
     }
 	ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:urlStr]];
 	[request setDelegate:self];
-    request.timeOutSeconds = TIME_OUT_SECOND_POST;
+    [request setTimeOutSeconds:TIME_OUT_SECOND_POST];
     [postDatas enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([obj isKindOfClass:[NSData class]]) {
             [request addData:obj
@@ -134,7 +138,7 @@
               andContentType:@"file"
                       forKey:key];
         } else {
-            [request addPostValue:[postDatas objectForKey:key]
+            [request addPostValue:postDatas[key]
                            forKey:key];
         }
     }];
@@ -166,14 +170,12 @@
             header.data = response;
             if ([self filter:header]) {
                 //线程锁
-                if ([self checkRegist:header.netDelegate]) 
-                {
+                if ([self checkRegist:header.netDelegate]) {
                     [header.netDelegate networkFinished:header];
                 }
             } else {
                 //线程锁
-                if ([self checkRegist:header.netDelegate]) 
-                {
+                if ([self checkRegist:header.netDelegate]) {
                     [header.netDelegate networkFailed:header];
                 }
             }

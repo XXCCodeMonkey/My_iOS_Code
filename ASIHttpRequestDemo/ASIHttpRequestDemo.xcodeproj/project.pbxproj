@@ -47,6 +47,7 @@
 		1D2DBE1218FE60620005EE76 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2DBE1118FE60620005EE76 /* libz.dylib */; };
 		1D2DBE1718FE66D80005EE76 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2DBE1618FE66D80005EE76 /* NetworkManager.m */; };
 		1D2DBE2D18FE6C720005EE76 /* XYXNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2DBE2C18FE6C720005EE76 /* XYXNetworkManager.m */; };
+		1DB2639D1908E1960040B044 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DB2639C1908E1960040B044 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,8 +59,8 @@
 		1D2DBCD818FE58F20005EE76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1D2DBCDA18FE58F20005EE76 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1D2DBCDC18FE58F20005EE76 /* ASIHttpRequestDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ASIHttpRequestDemo-Prefix.pch"; sourceTree = "<group>"; };
-		1D2DBCDD18FE58F20005EE76 /* XYXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYXAppDelegate.h; sourceTree = "<group>"; };
-		1D2DBCDE18FE58F20005EE76 /* XYXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYXAppDelegate.m; sourceTree = "<group>"; };
+		1D2DBCDD18FE58F20005EE76 /* XYXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XYXAppDelegate.h; path = ASIHttpRequestDemo/XYXAppDelegate.h; sourceTree = "<group>"; };
+		1D2DBCDE18FE58F20005EE76 /* XYXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XYXAppDelegate.m; path = ASIHttpRequestDemo/XYXAppDelegate.m; sourceTree = "<group>"; };
 		1D2DBCE318FE58F20005EE76 /* XYXViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYXViewController.h; sourceTree = "<group>"; };
 		1D2DBCE418FE58F20005EE76 /* XYXViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYXViewController.m; sourceTree = "<group>"; };
 		1D2DBCED18FE58F20005EE76 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -126,6 +127,7 @@
 		1D2DBE1618FE66D80005EE76 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		1D2DBE2B18FE6C720005EE76 /* XYXNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYXNetworkManager.h; sourceTree = "<group>"; };
 		1D2DBE2C18FE6C720005EE76 /* XYXNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYXNetworkManager.m; sourceTree = "<group>"; };
+		1DB2639C1908E1960040B044 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,9 @@
 		1D2DBCC218FE58F20005EE76 = {
 			isa = PBXGroup;
 			children = (
+				1DB2639C1908E1960040B044 /* Default-568h@2x.png */,
+				1D2DBCDD18FE58F20005EE76 /* XYXAppDelegate.h */,
+				1D2DBCDE18FE58F20005EE76 /* XYXAppDelegate.m */,
 				1D2DBCD418FE58F20005EE76 /* ASIHttpRequestDemo */,
 				1D2DBD8618FE5FCD0005EE76 /* ASIHttpRequest */,
 				1D2DBCCD18FE58F20005EE76 /* Frameworks */,
@@ -186,8 +191,6 @@
 		1D2DBCD418FE58F20005EE76 /* ASIHttpRequestDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1D2DBCDD18FE58F20005EE76 /* XYXAppDelegate.h */,
-				1D2DBCDE18FE58F20005EE76 /* XYXAppDelegate.m */,
 				1D2DBCE318FE58F20005EE76 /* XYXViewController.h */,
 				1D2DBCE418FE58F20005EE76 /* XYXViewController.m */,
 				1D2DBD0318FE5A2D0005EE76 /* XYXViewController.xib */,
@@ -388,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D2DBCD918FE58F20005EE76 /* InfoPlist.strings in Resources */,
+				1DB2639D1908E1960040B044 /* Default-568h@2x.png in Resources */,
 				1D2DBD0418FE5A2D0005EE76 /* XYXViewController.xib in Resources */,
 				1D2DBE0518FE5FCD0005EE76 /* README-GHUnit in Resources */,
 			);
@@ -572,6 +576,7 @@
 				1D2DBCFF18FE58F20005EE76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

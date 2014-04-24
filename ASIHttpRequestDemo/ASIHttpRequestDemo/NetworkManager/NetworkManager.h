@@ -11,18 +11,24 @@
 @class NetworkHeader;
 
 @protocol NetworkProtocol
--(void)networkFinished:(NetworkHeader*)header;
--(void)networkFailed:(NetworkHeader*)header;
+
+@required
+- (void)networkFinished:(NetworkHeader *)header;
+- (void)networkFailed:(NetworkHeader *)header;
+
+@optional
+
 @end
 
 //自定义网络数据包头，用于区分不同类型的请求和回复
 @interface NetworkHeader : NSObject
 
-@property (nonatomic) NSUInteger reqType;         //请求类型
-@property (nonatomic, copy) NSString *reqName;    //请求方法名
-@property (nonatomic, strong) id data;            //返回数据
-@property (nonatomic, assign) id <NetworkProtocol> netDelegate;
 @property (nonatomic, strong) ASIHTTPRequest *request;
+@property (nonatomic, strong) id data;            //返回数据
+@property (nonatomic, assign) NSUInteger reqType;  //请求类型
+@property (nonatomic, copy)   NSString *reqName;   //请求方法名
+@property (nonatomic, assign) id <NetworkProtocol> netDelegate;
+
 @end
 
 //自定义网络数据返回
@@ -38,14 +44,19 @@
 @property (nonatomic, strong) ASINetworkQueue *networkQueue;
 @property (nonatomic, strong) NSMutableDictionary *queueMapping;
 @property (nonatomic, strong) NSMutableDictionary *registedInstances;
-@property (nonatomic, copy) NSString *downloadImageFolder;
-@property (nonatomic) BOOL threadLock;
+@property (nonatomic, copy)   NSString *downloadImageFolder;
+@property (nonatomic, assign) BOOL threadLock;
 
 + (id)sharedInstace;
 
-- (NetworkHeader*)addGetOperation:(NSString*)urlStr ReqType:(NSUInteger)reqType Delegate:(id)delg;
+- (NetworkHeader *)addGetOperation:(NSString*)urlStr
+                           ReqType:(NSUInteger)reqType
+                          Delegate:(id)delg;
 
-- (NetworkHeader*)addPostOperation:(NSString*)urlStr ReqType:(NSUInteger)reqType PostDatas:(NSDictionary*)postDatas Delegate:(id)delg;
+- (NetworkHeader *)addPostOperation:(NSString*)urlStr
+                            ReqType:(NSUInteger)reqType
+                          PostDatas:(NSDictionary*)postDatas
+                           Delegate:(id)delg;
 
 - (BOOL)checkRegist:(id)instanceAddress;
 //处理返回值转换
